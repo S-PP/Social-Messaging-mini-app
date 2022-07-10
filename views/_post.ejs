@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="/css/home.css">
+
+<li id="post-<%=post._id%>" style="margin-left: 60px; ">
+    <p>
+        
+        
+        <% if(locals.user){%>
+        <br>
+        <img class="rounded-circle" src="<%=user.avatar%>" width="40" height="40">
+        <small>
+            <%= post.user.name %>
+        </small>
+        <br/>
+        <%} %>
+        <%= post.content %>
+        <% if (locals.user && locals.user.id==post.user.id) { %>
+            <large>
+                <button class="btn btn-danger btn-sm shadow-none" type="submit" style="margin-left: 50px;"><a href="/posts/destroy/<%=post.id%>" >Delete</a></button>
+                <!-- <a href="/posts/destroy/<%=post.id%>" style="margin-left: 90px;">Delete</a> -->
+                <!-- <a class="delete-post-button" href="/posts/destroy/<%=post.id%>">Delete</a> -->
+            </large>
+        <% } %>
+        
+        <br>
+        <small>
+            <% if(locals.user){%>
+                <a class="toggle-like-button" data-likes="<%=post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                    
+                    <%=post.likes.length %> Likes
+                </a>
+                
+                <%}else{%>
+                    
+                    <%= post.likes.length %> Likes
+                <%} %>
+        </small>
+
+    </p>
+
+   
+
+
+    
+        <% if (locals.user){ %>
+            <form id="post-<%= post._id %>-comments-form" action="/comments/create" method="POST">
+                <img class="rounded-circle" src="<%=user.avatar%>" width="40" height="40">
+                <input type="text" name="content" placeholder="Type Here to add comment..." required>
+                <input type="hidden" name="post" value="<%= post._id %>" >
+                <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
+            </form>
+
+        <% } %>
+
+        <div class="post-comments-list">
+            <ul id="post-comments-<%= post._id %>" >
+                <% for (comment of post.comments){%>
+                    <%-include('_comments')-%>
+
+                <%} %>
+            </ul>
+        </div>
+    
+    
+</li>

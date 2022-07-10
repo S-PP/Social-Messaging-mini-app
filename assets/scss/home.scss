@@ -1,0 +1,150 @@
+// body{
+//     overflow: auto;
+//     padding-bottom: 100px;
+//       min-height: calc(100vh - 70px);
+// }
+
+#home-container{
+    
+    display: flex;
+    #feed-posts{ margin-left: 50px;
+        flex: 8.5;
+        width: 70%;
+        padding: 10px;
+        min-height: calc(100vh - 70px);
+    }
+
+    #user-friends{
+        flex: 3.5;
+        width: 30%;
+        padding: 10px;
+        border-left: 1px solid lightgrey;
+        
+    }
+}
+
+#posts-list-container ul li{
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  padding-left: 20px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+}
+
+.sidebarList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .sidebarWrapper {
+    padding: 20px;
+  }
+  .sidebarListItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .sidebarIcon {
+    margin-right: 15px;
+  }
+
+  .share {
+    width: 50%;
+    height: 170px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  }
+  
+  .shareWrapper {
+    padding: 10px;
+  }
+  
+  .shareTop {
+    display: flex;
+    align-items: center;
+  }
+  
+  .shareProfileImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .shareInput {
+    border: none;
+    width: 80%;
+  }
+  
+  .shareInput:focus {
+    outline: none;
+  }
+  
+  .shareHr {
+    margin: 20px;
+  }
+  
+  .shareBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .shareOptions{
+      display: flex;
+      margin-left: 20px;
+  }
+  
+  .shareOption{
+      display: flex;
+      align-items: center;
+      margin-right: 15px;
+      cursor: pointer;
+  }
+  
+  .shareIcon{
+      font-size: 18px;
+      margin-right: 3px;
+  }
+  
+  .shareOptionText{
+      font-size: 14px;
+      font-weight: 500;
+  }
+  
+  .shareButton{
+      border: none;
+      padding: 7px;
+      border-radius: 5px;
+      background-color: green;
+      font-weight: 500;
+      margin-right: 20px;
+      cursor: pointer;
+      color: white;
+  }
+  .post-comments-list{
+    list-style-type: none;
+  }
+  .bg-light p-2{
+    width: 30%; margin-left: 80px; background-color: white;
+  }
+
+  .badge badge-danger{
+    margin-left: 90px;
+  }
+  .material-icons{
+      color: rgba(56, 3, 77, 0.836);
+  }
+  
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(179, 179, 179);
+  }

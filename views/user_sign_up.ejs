@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/css/user_sign_in.css">
+
+
+
+<div class="login">
+
+<div class="loginWrapper">
+
+    <div class="loginLeft">
+        <h3 class="loginLogo">ZappUp</h3>
+        <span class="loginDesc">
+          Connecting Eachother efficiently!
+        </span>
+    </div>
+
+<div class="loginRight">
+
+<form class="loginBox" action="/users/create" method="POST">
+    <input class="form__input" type="text" name="name" placeholder="Name" required>
+    <label for="name" class="form__label">Name</label>
+    <input class="form__input" type="email" name="email" placeholder="Your Email" required>
+    <label for="name" class="form__label">Email</label>
+    <input class="form__input" type="password" name="password" placeholder="Password" required>
+    <label for="name" class="form__label">Password</label>
+    <input class="form__input" type="password" name="confirm_password" placeholder="Confirm it" required>
+    <label for="name" class="form__label">Confirm it</label>
+    <input class="loginButton" type="submit" value="Sign Up">
+
+</form>
+<div class="middle">
+    <a href="/users/auth/google" class="btn btn1">Google sign-in/sign-up</a>
+</div>
+</div>
+
+</div>
+</div>

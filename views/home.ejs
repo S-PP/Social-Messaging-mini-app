@@ -1,0 +1,177 @@
+
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/chat_box.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+    <button class="w3-bar-item w3-button w3-large"
+    onclick="w3_close()">Close &times;</button>
+    
+    
+        <div class="sidebarWrapper">
+            <ul class="sidebarList">
+              <li class="sidebarListItem">
+                <span class="material-icons">
+                    rss_feed
+                    </span>
+                <span class="sidebarListItemText">Feed</span>
+              </li>
+              <li class="sidebarListItem">
+                <span class="material-icons">
+                    chat_bubble
+                    </span>
+                <span class="sidebarListItemText">Chats</span>
+              </li>
+              <li class="sidebarListItem">
+                <span class="material-icons">
+                    play_circle_filled
+                    </span>
+                    
+                <span class="sidebarListItemText">Videos</span>
+              </li>
+              <li class="sidebarListItem">
+                <span class="material-icons">
+                    groups
+                    </span>
+                <span class="sidebarListItemText">Groups</span>
+              </li>
+              <li class="sidebarListItem">
+                <span class="material-icons">
+                    bookmark
+                    </span>
+                <span class="sidebarListItemText">Bookmarks</span>
+              </li>
+              </ul>
+        </div>
+  </div>
+
+  <div id="main">
+
+    <div class="w3-teal" >
+      <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+      <div class="w3-container">
+        <h1>
+            <%= title %>
+        </h1>
+      </div>
+    </div>
+      <div id="home-container">
+
+        <section id="feed-posts" style="margin-top: 20px;">
+            <!-- <h4>Posts</h4> -->
+            <% if(locals.user){ %>
+                <!-- <form action="/posts/create" id="new-post-form" method="POST">
+                    <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
+                    <input type="submit" value="Post">
+                </form> -->
+                <div class="share">
+                <div class="shareWrapper">
+                    
+                        <form action="/posts/create" id="new-post-form" method="POST">
+                        <div class="shareTop">
+                            <!-- <img class="shareProfileImg" src="<%=user.avatar%>" alt="" /> -->
+                            <input class="shareInput" name="content" placeholder="What's in your mind"/>
+                        </div>
+                        <hr class="shareHr" />
+                        <div class="shareBottom">
+                            <div class="shareOptions">
+                                <div class="shareOption">
+                                    <span class="material-icons" htmlColor="tomato" class="shareIcon">
+                                        perm_media
+                                        </span>
+                                    <!-- <PermMedia htmlColor="tomato" class="shareIcon"/> -->
+                                    <span class="shareOptionText">Photo or Video</span>
+                                </div>
+                                <div class="shareOption">
+                                    <span class="material-icons"  htmlColor="blue" class="shareIcon">
+                                        label
+                                        </span>
+                                    <!-- <Label htmlColor="blue" class="shareIcon"/> -->
+                                    <span class="shareOptionText">Tag</span>
+                                </div>
+                                <div class="shareOption">
+                                    <span class="material-icons" htmlColor="goldenrod" class="shareIcon">
+                                        emoji_emotions
+                                        </span>
+                                    <!-- <EmojiEmotions htmlColor="goldenrod" class="shareIcon"/> -->
+                                    <span class="shareOptionText">Feelings</span>
+                                </div>
+                            </div>
+
+                        <Button variant="contained" class="shareButton" color="success" type="submit" value="Post">
+                            Post
+                            </Button>
+                        </div>
+                        </form>
+                    </div>
+                    
+                    </div>
+                
+
+                <% } %>
+                
+                <div id="posts-list-container">
+                    <ul style="list-style-type: none;">
+                        <li >
+                            <% for(post of posts){ %>
+                            
+                            <%- include('_post')-%>
+                            
+                            <% } %></li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section id="user-friends">
+                    <h4> Friends</h4>
+                    <% for(u of all_users) {%>
+                        <p>
+                            <a href="/users/profile/<%= u.id %>"><%= u.name%></a>
+                        </p>
+                        
+                        <%} %>
+                        
+                    </section>
+    
+                    <%- include('_chat_box') -%>
+                </div>
+    
+    
+    
+                <script src="/js/home_post_comments.js" ></script>
+                <script src="/js/home_posts.js"></script>
+                
+                <script src="js/toggle_likes.js"></script>
+                <script>
+                    $('.toggle-like-button').each(function(){
+                        let self = this;
+                        let toggleLike = new ToggleLike(self);
+                    });
+                </script>
+                <script src=https://cdn.socket.io/4.3.2/socket.io.js></script>
+                <script src="/js/chat_engine.js"></script>
+                <% if (locals.user){ %>
+                <script>
+                    new ChatEngine('user-chat-box', '<%= locals.user.email %>')
+                </script>
+                <% } %>
+    </div>
+    
+</div>
+
+
+<script>
+    function w3_open() {
+      document.getElementById("main").style.marginLeft = "20%";
+      document.getElementById("mySidebar").style.width = "20%";
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("openNav").style.display = 'none';
+    }
+    function w3_close() {
+      document.getElementById("main").style.marginLeft = "0%";
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("openNav").style.display = "inline-block";
+    }
+    </script>
+
